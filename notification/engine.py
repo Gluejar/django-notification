@@ -20,10 +20,11 @@ from . import models as notification
 # lock timeout value. how long to wait for the lock to become available.
 # default behavior is to never wait for the lock to be available.
 LOCK_WAIT_TIMEOUT = getattr(settings, "NOTIFICATION_LOCK_WAIT_TIMEOUT", -1)
+LOCK_FILE = getattr(settings, "NOTIFICATION_LOCK_FILE", "send_notices")
 
 
 def send_all():
-    lock = FileLock("send_notices")
+    lock = FileLock(LOCK_FILE)
     
     logging.debug("acquiring lock...")
     try:
