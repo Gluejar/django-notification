@@ -1,5 +1,5 @@
 from __future__ import print_function
-from six import text_type as unicodestr
+unicodestr = str
 import datetime
 
 try:
